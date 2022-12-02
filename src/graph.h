@@ -8,6 +8,7 @@
 #include <vector>
 #include <fstream>
 #include <map>
+#include <cmath>
 
 using std::pair;
 using std::priority_queue;
@@ -63,7 +64,12 @@ class Graph {
      * @param node Dijkstra's
     */
     vector<Node*> getShortestPath(Node* node);
-    
+
+    /*
+     * Returns a vector of all nodes that have a loss ratio within 
+     * a given range of a target. Uses BFS to traverse graph.
+    */
+    std::vector<Node*> findByLoss(double target, double range);
 
     private:
     vector<vector<string>> data_;
@@ -81,6 +87,9 @@ class Graph {
     Initialized in the Graph constructor.
     */
     Node* lowest_risk_;
+
+    // size
+    size_t size;
 
     /**
      * Traverses spanning tree to get the Shortest Path
